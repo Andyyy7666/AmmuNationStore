@@ -20,7 +20,7 @@ else
 end
 
 -- Alert on top left of screen
-function alert(msg) 
+function alert(msg)
     SetTextComponentFormat("STRING")
     AddTextComponentString(msg)
     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
@@ -33,7 +33,7 @@ function InGunStore()
 
 	if GunStore == 1 then
 		return true
-    elseif MainMenu:Visible() == true and GunStore ~= 1 then
+    elseif _MenuPool:IsAnyMenuOpen() and GunStore ~= 1 then
         _MenuPool:CloseAllMenus()
     end
 end
