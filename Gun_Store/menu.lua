@@ -277,15 +277,11 @@ Citizen.CreateThread(function()
 		_MenuPool:ControlDisablingEnabled(false)
 		_MenuPool:MouseControlsEnabled(false)
 
-		if InGunStore() then
+		if InGunStore() and not _MenuPool:IsAnyMenuOpen() then
 			alert("Press ~INPUT_CONTEXT~ to view the weapon menu.")
-			if IsControlJustPressed(0, 51) then
-				if not menuOpen then
-                    Menu()
-                    MainMenu:Visible(true)
-                else
-                    _MenuPool:CloseAllMenus()
-                end
+			if IsControlJustPressed(0, 51) and not _MenuPool:IsAnyMenuOpen() then
+                Menu()
+                MainMenu:Visible(true)
 			end
 		end
 	end
