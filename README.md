@@ -1,7 +1,6 @@
 # Need Support?
-Join my discord server if you need support.
 
-https://discord.gg/Z9Mxu72zZ6
+[![Need Support?](https://i.imgur.com/fqKYWeV.png)](https://discord.gg/Z9Mxu72zZ6)
 
 I can always help.
 
