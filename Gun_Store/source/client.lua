@@ -40,17 +40,31 @@ end
 
 -- Give player weapons
 function giveWeapon(hash, weapon, price)
-    GiveWeaponToPed(PlayerPedId(), GetHashKey(hash), 30, false, false)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString("You've purchased a " .. "~b~" .. weapon .. "~w~ for ~g~$" .. price .. ".")
-    DrawNotification(true, true)
-    exports.Money_Script:RemoveBank(price)
+    local bank = exports.Money_Script:CheckBank()
+    if bank >= price then
+    	GiveWeaponToPed(PlayerPedId(), GetHashKey(hash), 30, false, false)
+    	SetNotificationTextEntry("STRING")
+    	AddTextComponentString("You've purchased a " .. "~b~" .. weapon .. "~w~ for ~g~$" .. price .. ".")
+    	DrawNotification(true, true)
+    	exports.Money_Script:RemoveBank(price)
+    else
+	SetNotificationTextEntry("STRING")
+	AddTextComponentString("Purchase failed: Insufficient funds")
+	DrawNotification(true,true)
+    end
 end
 
 function giveAmmo(ammoType, name, amount, price)
-    AddAmmoToPedByType(PlayerPedId(), ammoType, amount)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString("You've purchased a " .. "~b~" .. name .. "~w~ for ~g~$" .. price .. ".")
-    DrawNotification(true, true)
-    exports.Money_Script:RemoveBank(price)
+    local bank = export.Money_Script:CheckBank()
+    if bank >= price then
+    	AddAmmoToPedByType(PlayerPedId(), ammoType, amount)
+    	SetNotificationTextEntry("STRING")
+    	AddTextComponentString("You've purchased a " .. "~b~" .. name .. "~w~ for ~g~$" .. price .. ".")
+    	DrawNotification(true, true)
+    	exports.Money_Script:RemoveBank(price)
+    else
+	SetNotificationTextEntry("STRING")
+	AddTextComponentString("Purchase failed: Insufficient funds")
+	DrawNotification(true,true)
+    end
 end
