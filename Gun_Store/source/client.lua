@@ -55,7 +55,7 @@ function giveWeapon(hash, weapon, price)
 end
 
 function giveAmmo(ammoType, name, amount, price)
-    local bank = export.Money_Script:CheckBank()
+    local bank = exports.Money_Script:CheckBank()
     if bank >= price then
     	AddAmmoToPedByType(PlayerPedId(), ammoType, amount)
     	SetNotificationTextEntry("STRING")
