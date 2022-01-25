@@ -20,3 +20,5 @@ client_scripts {
     "source/menu.lua",
     "source/client.lua",
 }
+
+server_script "server.lua"
