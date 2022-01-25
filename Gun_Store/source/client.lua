@@ -8,9 +8,9 @@
 
 --exports.Money_Script:AddBank(salary)
 
-if Config.CustomMenuEnabled then
+if config.customMenuEnabled then
     local RuntimeTXD = CreateRuntimeTxd('Custom_Menu_Head')
-    local Object = CreateDui(Config.MenuImage, 512, 128)
+    local Object = CreateDui(config.menuImage, 512, 128)
     _G.Object = Object
     local TextureThing = GetDuiHandle(Object)
     local Texture = CreateRuntimeTextureFromDuiHandle(RuntimeTXD, 'Custom_Menu_Head', TextureThing)
@@ -33,38 +33,30 @@ function InGunStore()
 
 	if GunStore == 1 then
 		return true
-    elseif _MenuPool:IsAnyMenuOpen() and GunStore ~= 1 then
-        _MenuPool:CloseAllMenus()
+    elseif _menuPool:IsAnyMenuOpen() and GunStore ~= 1 then
+        _menuPool:CloseAllMenus()
     end
 end
 
--- Give player weapons
-function giveWeapon(hash, weapon, price)
-    local bank = exports.Money_Script:CheckBank()
-    if bank >= price then
-    	GiveWeaponToPed(PlayerPedId(), GetHashKey(hash), 30, false, false)
-    	SetNotificationTextEntry("STRING")
-    	AddTextComponentString("You've purchased a " .. "~b~" .. weapon .. "~w~ for ~g~$" .. price .. ".")
-    	DrawNotification(true, true)
-    	exports.Money_Script:RemoveBank(price)
+RegisterNetEvent("purchaseWeapon")
+AddEventHandler("purchaseWeapon", function(name, hash, price, ammo)
+    if ammo == "none" then
+        giveWeapon(name, hash, price)
     else
-	SetNotificationTextEntry("STRING")
-	AddTextComponentString("Purchase failed: Insufficient funds")
-	DrawNotification(true,true)
+        giveAmmo(name, ammo, price, hash)
     end
+end)
+
+function giveWeapon(name, hash, price)
+    GiveWeaponToPed(PlayerPedId(), GetHashKey(hash), 30, false, false)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString("You've purchased a " .. "~b~" .. name .. "~w~ for ~g~$" .. price .. ".")
+    DrawNotification(true, true)
 end
 
-function giveAmmo(ammoType, name, amount, price)
-    local bank = exports.Money_Script:CheckBank()
-    if bank >= price then
-    	AddAmmoToPedByType(PlayerPedId(), ammoType, amount)
-    	SetNotificationTextEntry("STRING")
-    	AddTextComponentString("You've purchased a " .. "~b~" .. name .. "~w~ for ~g~$" .. price .. ".")
-    	DrawNotification(true, true)
-    	exports.Money_Script:RemoveBank(price)
-    else
-	SetNotificationTextEntry("STRING")
-	AddTextComponentString("Purchase failed: Insufficient funds")
-	DrawNotification(true,true)
-    end
+function giveAmmo(name, amount, price, ammoType)
+    AddAmmoToPedByType(PlayerPedId(), ammoType, amount)
+    SetNotificationTextEntry("STRING")
+    AddTextComponentString("You've purchased ~b~" .. amount .. " ~s~rounds of ~b~" .. name .. "~w~ for ~g~$" .. price .. ".")
+    DrawNotification(true, true)
 end
