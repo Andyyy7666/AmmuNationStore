@@ -14,11 +14,11 @@ description "Gun Store with Andyyy Currency System"
 author "Andyyy#7666"
 version "v1.1"
 
+server_script "source/server.lua"
+
 client_scripts {
     "source/NativeUI.lua",
     "config.lua",
     "source/menu.lua",
     "source/client.lua",
 }
-
-server_script "server.lua"
