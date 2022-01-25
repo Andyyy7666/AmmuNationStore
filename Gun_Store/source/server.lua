@@ -19,18 +19,38 @@ RegisterNetEvent("purchaseWeapon")
 AddEventHandler("purchaseWeapon", function(name, hash, price, ammo)
     local player = source
     local amount = price
-    exports.oxmysql:query("SELECT bank FROM money WHERE license = ?", {GetPlayerIdentifierFromType("license", player)}, function(result)
-        if result then
-            if result[1].bank < amount then
-                TriggerClientEvent("chat:addMessage", player, {
-                    color = {255, 0, 0},
-                    args = {"Error", "You don't have enough money."}
-                })
-            else
-                exports.oxmysql:query("UPDATE money SET bank = bank - ? WHERE license = ?", {amount, GetPlayerIdentifierFromType("license", player)})
-                TriggerClientEvent("updateMoney", player, amount, "bank")
-                TriggerClientEvent("purchaseWeapon", player, name, hash, price, ammo)
+
+    if config.useNDCore then
+        local players = exports["ND_Core"]:getCharacterTable()
+        local characterId = players[player].characterId
+        exports.oxmysql:query("SELECT bank FROM characters WHERE license = ? AND character_Id = ?", {GetPlayerIdentifierFromType("license", player), characterId}, function(result)
+            if result then
+                if result[1].bank < amount then
+                    TriggerClientEvent("chat:addMessage", player, {
+                        color = {255, 0, 0},
+                        args = {"Error", "You don't have enough money."}
+                    })
+                else
+                    exports.oxmysql:query("UPDATE characters SET bank = bank - ? WHERE license = ? AND character_Id = ?", {amount, GetPlayerIdentifierFromType("license", player), characterId})
+                    TriggerClientEvent("updateMoney", player)
+                    TriggerClientEvent("purchaseWeapon", player, name, hash, price, ammo)
+                end
             end
-        end
-    end)
+        end)
+    else
+        exports.oxmysql:query("SELECT bank FROM money WHERE license = ?", {GetPlayerIdentifierFromType("license", player)}, function(result)
+            if result then
+                if result[1].bank < amount then
+                    TriggerClientEvent("chat:addMessage", player, {
+                        color = {255, 0, 0},
+                        args = {"Error", "You don't have enough money."}
+                    })
+                else
+                    exports.oxmysql:query("UPDATE money SET bank = bank - ? WHERE license = ?", {amount, GetPlayerIdentifierFromType("license", player)})
+                    TriggerClientEvent("updateMoney", player, amount, "bank")
+                    TriggerClientEvent("purchaseWeapon", player, name, hash, price, ammo)
+                end
+            end
+        end)
+    end
 end)
