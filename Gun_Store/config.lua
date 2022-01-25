@@ -13,6 +13,8 @@ config = {
 	customMenuEnabled = true, -- Custom banner https://imgur.com/upload
 	menuImage = "https://i.imgur.com/YHgZX1E.png", -- Another cool image: https://i.imgur.com/ON97ple.png
 
+    useNDCore = true, -- If you turn this on then it will be paying with the character money from NDCore otherwise it will use my Currency Script. 
+
     weapons = {
         HandGuns = {
             pistols_1 = {"Pistol", "weapon_pistol", 699, "Most reliable and dependable sidearm for law-enforcement, military and personal defense."},
