@@ -6,8 +6,6 @@
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
---exports.Money_Script:AddBank(salary)
-
 if config.customMenuEnabled then
     local RuntimeTXD = CreateRuntimeTxd('Custom_Menu_Head')
     local Object = CreateDui(config.menuImage, 512, 128)
