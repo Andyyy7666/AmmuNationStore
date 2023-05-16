@@ -7,7 +7,10 @@
 ------------------------------------------------------------------------
 
 config = {
-    saveWeapons = true,
+    saving = {
+        enabled = true,
+        filePath = "weapons.json" -- don't touch
+    },
 
     menu = {
         position = "right",
@@ -30,28 +33,23 @@ config = {
                     price = 699, 
                     description = "Most reliable and dependable sidearm for law-enforcement, military and personal defense.",
                     components = {
-                        [1] = {
-                            name = 'Default Clip',
+                        ["Default Clip"] = {
                             price = 10,
                             hashKey = `COMPONENT_PISTOL_CLIP_01`
                         },
-                        [2] = {
-                            name = 'Extended Clip',
+                        ["Extended Clip"] = {
                             price = 20,
                             hashKey = `COMPONENT_PISTOL_CLIP_02`
                         },
-                        [3] = {
-                            name = 'Flashlight',
+                        ["Flashlight"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_PI_FLSH`
                         },
-                        [4] = {
-                            name = 'Suppressor',
+                        ["Suppressor"] = {
                             price = 30,
                             hashKey = `COMPONENT_AT_PI_SUPP_02`
                         },
-                        [5] = {
-                            name = 'Yusuf Amir Luxury Finish',
+                        ["Yusuf Amir Luxury Finish"] = {
                             price = 60,
                             hashKey = `COMPONENT_PISTOL_VARMOD_LUXE`
                         }
@@ -62,39 +60,33 @@ config = {
         ["Submachine Guns"] = {
             type = "weapons", -- weapons / ammo / armor
             restricted = false, -- false or your prefered ace perm (ex: ammunation.pistols)
-            selection = {
+            selection = { -- I GOT REALLY LAZY SO ADD YOUR OWN WEAPONS AND COMPONENTS (https://forge.plebmasters.de/weapons)
                 ["Micro SMG"] = {
                     hashKey = `weapon_microsmg`, 
                     price = 2400, 
                     description = "Combines compact design with a high rate of fire at approximately 700-900 rounds per minute.",
                     components = {
-                        [1] = {
-                            name = 'Default Clip',
+                        ["Default Clip"] = {
                             price = 10,
                             hashKey = `COMPONENT_MICROSMG_CLIP_01`
                         },
-                        [2] = {
-                            name = 'Extended Clip',
+                        ["Extended Clip"] = {
                             price = 20,
                             hashKey = `COMPONENT_MICROSMG_CLIP_02`
                         },
-                        [3] = {
-                            name = 'Flashlight',
+                        ["Flashlight"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_PI_FLSH`
                         },
-                        [4] = {
-                            name = 'Scope',
+                        ["Scope"] = {
                             price = 20,
                             hashKey = `COMPONENT_AT_SCOPE_MACRO`
                         },
-                        [5] = {
-                            name = 'Suppressor',
+                        ["Suppressor"] = {
                             price = 60,
                             hashKey = `COMPONENT_AT_AR_SUPP_02`
                         },
-                        [6] = {
-                            name = 'Yusuf Amir Luxury Finish',
+                        ["Yusuf Amir Luxury Finish"] = {
                             price = 60,
                             hashKey = `COMPONENT_MICROSMG_VARMOD_LUXE`
                         }
@@ -105,24 +97,21 @@ config = {
         ["Shotguns"] = {
             type = "weapons", -- weapons / ammo / armor
             restricted = false, -- false or your prefered ace perm (ex: ammunation.pistols)
-            selection = {
+            selection = { -- I GOT REALLY LAZY SO ADD YOUR OWN WEAPONS AND COMPONENTS (https://forge.plebmasters.de/weapons)
                 ["Pump Shotgun"] = {
                     hashKey = `weapon_pumpshotgun`, 
                     price = 800, 
                     description = "Standard shotgun ideal for short-range combat. High-projectile spread, lower accuracy at long range.",
                     components = {
-                        [1] = {
-                            name = 'Flashlight',
+                        ["Flashlight"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_AR_FLSH`
                         },
-                        [2] = {
-                            name = 'Suppressor',
+                        ["Suppressor"] = {
                             price = 20,
                             hashKey = `COMPONENT_AT_SR_SUPP`
                         },
-                        [3] = {
-                            name = 'Yusuf Amir Luxury Finish',
+                        ["Yusuf Amir Luxury Finish"] = {
                             price = 60,
                             hashKey = `COMPONENT_PUMPSHOTGUN_VARMOD_LOWRIDER`
                         }
@@ -133,49 +122,41 @@ config = {
         ["Assault Rifles"] = {
             type = "weapons", -- weapons / ammo / armor
             restricted = false, -- false or your prefered ace perm (ex: ammunation.pistols)
-            selection = {
+            selection = { -- I GOT REALLY LAZY SO ADD YOUR OWN WEAPONS AND COMPONENTS (https://forge.plebmasters.de/weapons)
                 ["Assault Rifle"] = {
                     hashKey = `weapon_assaultrifle`, 
                     price = 8280, 
                     description = "This standard assault rifle boasts a large capacity magazine and long distance accuracy.",
                     components = {
-                        [1] = {
-                            name = 'Default Clip',
+                        ["Default Clip"] = {
                             price = 10,
                             hashKey = `COMPONENT_ASSAULTRIFLE_CLIP_01`
                         },
-                        [2] = {
-                            name = 'Extended Clip',
+                        ["Extended Clip"] = {
                             price = 20,
                             hashKey = `COMPONENT_ASSAULTRIFLE_CLIP_02`
                         },
-                        [3] = {
-                            name = 'Drum Magazine',
+                        ["Drum Magazine"] = {
                             price = 30,
                             hashKey = `COMPONENT_ASSAULTRIFLE_CLIP_03`
                         },
-                        [4] = {
-                            name = 'Flashlight',
+                        ["Flashlight"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_AR_FLSH`
                         },
-                        [5] = {
-                            name = 'Scope',
+                        ["Scope"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_SCOPE_MACRO`
                         },
-                        [6] = {
-                            name = 'Suppressor',
+                        ["Suppressor"] = {
                             price = 30,
                             hashKey = `COMPONENT_AT_AR_SUPP_02`
                         },
-                        [7] = {
-                            name = 'Grip',
+                        ["Grip"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_AR_AFGRIP`
                         },
-                        [8] = {
-                            name = 'Yusuf Amir Luxury Finish',
+                        ["Yusuf Amir Luxury Finish"] = {
                             price = 60,
                             hashKey = `COMPONENT_ASSAULTRIFLE_VARMOD_LUXE`
                         }
@@ -186,29 +167,25 @@ config = {
         ["Light Machine Guns"] = {
             type = "weapons", -- weapons / ammo / armor
             restricted = false, -- false or your prefered ace perm (ex: ammunation.pistols)
-            selection = {
+            selection = { -- I GOT REALLY LAZY SO ADD YOUR OWN WEAPONS AND COMPONENTS (https://forge.plebmasters.de/weapons)
                 ["MG"] = {
                     hashKey = `weapon_mg`, 
                     price = 8500, 
                     description = "General purpose machine. Long range penetrative power. Very effective against large groups.",
                     components = {
-                        [1] = {
-                            name = 'Default Clip',
+                        ["Default Clip"] = {
                             price = 10,
                             hashKey = `COMPONENT_MG_CLIP_01`
                         },
-                        [2] = {
-                            name = 'Extended Clip',
+                        ["Extended Clip"] = {
                             price = 20,
                             hashKey = `COMPONENT_MG_CLIP_02`
                         },
-                        [4] = {
-                            name = 'Scope',
+                        ["Scope"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_SCOPE_SMALL_02`
                         },
-                        [4] = {
-                            name = 'Yusuf Amir Luxury Finish',
+                        ["Yusuf Amir Luxury Finish"] = {
                             price = 60,
                             hashKey = `COMPONENT_MG_VARMOD_LOWRIDER`
                         }
@@ -219,29 +196,25 @@ config = {
         ["Other"] = {
             type = "weapons", -- weapons / ammo / armor
             restricted = "ammunation.other", -- false or your prefered ace perm (ex: ammunation.pistols)
-            selection = {
+            selection = { -- I GOT REALLY LAZY SO ADD YOUR OWN WEAPONS AND COMPONENTS (https://forge.plebmasters.de/weapons)
                 ["Sniper Rifle"] = {
                     hashKey = `weapon_sniperrifle`, 
                     price = 12500, 
                     description = "Standard sniper rifle. Ideal for situations that require accuracy at long range.",
                     components = {
-                        [1] = {
-                            name = 'Suppressor',
+                        ["Suppressor"] = {
                             price = 20,
                             hashKey = `COMPONENT_AT_AR_SUPP_02`
                         },
-                        [2] = {
-                            name = 'Scope',
+                        ["Scope"] = {
                             price = 10,
                             hashKey = `COMPONENT_AT_SCOPE_LARGE`
                         },
-                        [3] = {
-                            name = 'Advanced Scope',
+                        ["Advanced Scope"] = {
                             price = 20,
                             hashKey = `COMPONENT_AT_SCOPE_MAX`
                         },
-                        [4] = {
-                            name = 'Yusuf Amir Luxury Finish',
+                        ["Yusuf Amir Luxury Finish"] = {
                             price = 60,
                             hashKey = `COMPONENT_SNIPERRIFLE_VARMOD_LUXE`
                         }
