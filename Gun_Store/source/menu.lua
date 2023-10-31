@@ -21,6 +21,25 @@ end
 _menuPool = NativeUI.CreatePool()
 mainMenu = NativeUI.CreateMenu()
 
+
+function GetWeaponLabel(weaponName)
+    for i, weaponData in ipairs(weaponLabels) do
+        if weaponData[1] == weaponName then
+            return weaponData[2]
+        end
+    end
+    return "Label not found"
+end
+
+function TextName(weaponName, weapon_id)
+    local wp_object = GetWeaponLabel(weapon_id)
+    if wp_object ~= "Label not found" then
+        return wp_object
+    else
+        return weaponName
+    end
+end
+
 function Menu()
     local MenuTitle = ""
     if not config.customMenuEnabled then
@@ -43,7 +62,8 @@ function Menu()
         local subMenu = _menuPool:AddSubMenu(mainMenu, string.gsub(subMenu, "_", " "), "", true, menuImage, menuImage)
         subMenu:SetMenuWidthOffset(config.menuWidth)
         for type, weaponInfo in pairs(items) do
-            local type = NativeUI.CreateItem(weaponInfo[1] .. ": ~g~$" .. weaponInfo[3], weaponInfo[4])
+            local type = NativeUI.CreateItem(TextName(weaponInfo[1], weaponInfo[2]) .. ": ~g~$" .. weaponInfo[3], weaponInfo[4])
+            -- local type = NativeUI.CreateItem(weaponInfo[1] .. ": ~g~$" .. weaponInfo[3], weaponInfo[4])
             subMenu:AddItem(type)
             type.Activated = function(ParentMenu, SelectedItem)
                 if weaponInfo[5] then

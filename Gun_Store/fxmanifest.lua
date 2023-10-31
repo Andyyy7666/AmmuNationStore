@@ -19,5 +19,6 @@ server_script "source/server.lua"
 client_scripts {
     "source/NativeUI.lua",
     "source/menu.lua",
-    "source/client.lua"
+    "source/client.lua",
+    "source/weapons.lua"
 }
